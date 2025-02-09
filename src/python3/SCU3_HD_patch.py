@@ -15,13 +15,11 @@ def Backup_and_rename_original_file():
 	#copy_rename(os.curdir,"'SCU3.exe1")
 	#shutil.copy2(os.curdir, "SCU3.exe1")
 	#navigate_and_rename(os.curdir)
-	currentDir=str(os.getcwd())
-	fileTolook="\SC3U.exe"
-	finalPath=currentDir+fileTolook
-	print(finalPath)
-	if os.path.isfile(finalPath)==True:
-		src_file=os.path.join(os.curdir,"SC3U.exe")
-		dst_file=os.path.join(os.curdir,"SC3U1.exe")
+	gameExecutable="SC3U.exe"
+	gameBackup="SC3U1.exe"
+	if os.path.isfile(gameExecutable)==True:
+		src_file=os.path.join(os.curdir,gameExecutable)
+		dst_file=os.path.join(os.curdir,gameBackup)
 		if os.path.exists(dst_file)!=True:
 			shutil.copy2(src_file, dst_file)
 		else:
@@ -33,7 +31,7 @@ def Backup_and_rename_original_file():
 def logHex_data_of_executable(filename):
 	# Open in binary mode (so you don't read two byte line endings on Windows as one byte)
 	# and use with statement (always do this to avoid leaked file descriptors, unflushed files)
-	with open('SC3u.exe', 'rb') as f:
+	with open('SC3U.exe', 'rb') as f:
 	    # Slurp the whole file and efficiently convert it to hex all at once
 	    hexdata = binascii.hexlify(f.read())
 	    #print(hexdata)
@@ -72,4 +70,4 @@ def main():#All the steps the program will perform while running and its functio
 # Initializer
 main()
 print("Exe updated sucessfully! ")
-print("original exe was backed up with the name SC3U.exe1")
+print(f"original exe was backed up with the name SC3U1.exe")
